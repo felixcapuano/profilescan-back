@@ -5,7 +5,7 @@
   "main": "entrypoint.js",
   "scripts": {
     "start": "node entrypoint.js",
-    "dev": "cross-env NODE_ENV=development node entrypoint.js",
+    "dev": "cross-env NODE_ENV=development nodemon entrypoint.js",
     "test": "cross-env NODE_ENV=test mocha"
   },
   "repository": {
