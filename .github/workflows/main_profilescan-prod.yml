@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-test-deploy:
+  install-and-test:
     runs-on: ubuntu-latest
     env:
       STEAM_API_KEY: ${{ secrets.STEAM_API_KEY }}

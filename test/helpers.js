@@ -37,16 +37,27 @@ before(async () => {
 
 beforeEach(async () => {
   logger.clear();
-  // logger.add(new winston.transports.Stream({
-  //   stream: fs.createWriteStream('/dev/null')
-  // }));
+  switch (process.platform) {
+    case "linux":
+      logger.add(new winston.transports.Stream({
+        stream: fs.createWriteStream('/dev/null')
+      }));
+      break;
+    case "win32":
+      logger.add(new winston.transports.Stream({
+        stream: fs.createWriteStream('/nul')
+      }));
+      break;
+    default:
+      break;
+  }
 
-  // console.log = (msg) => {
-  //   output = "";
-  //   console.log = (msg) => {
-  //     output += msg + "\n";
-  //   };
-  // };
+  console.log = (msg) => {
+    output = "";
+    console.log = (msg) => {
+      output += msg + "\n";
+    };
+  };
 });
 
 after(async () => {
